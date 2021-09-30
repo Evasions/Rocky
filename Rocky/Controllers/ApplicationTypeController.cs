@@ -18,7 +18,7 @@ namespace Rocky.Controllers
         }
         public IActionResult Index()
         {
-            IEnumerable<ApplicationType> objList = _dbContext.AplicationTypes;
+            IEnumerable<ApplicationType> objList = _dbContext.ApplicationTypes;
             return View(objList);
         }
         //Get create
@@ -30,7 +30,7 @@ namespace Rocky.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(ApplicationType obj)
         {
-            _dbContext.AplicationTypes.Add(obj);
+            _dbContext.ApplicationTypes.Add(obj);
             _dbContext.SaveChanges();
             return RedirectToAction("Index");
         }
