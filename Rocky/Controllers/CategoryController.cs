@@ -72,6 +72,35 @@ namespace Rocky.Controllers
             return View(obj);
         }
 
+        //Get - delete
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
 
+            var obj = _dbContext.Categories.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+        //Post- Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? id)
+        {
+            var obj = _dbContext.Categories.Find(id);
+
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            _dbContext.Categories.Remove(obj);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
