@@ -32,7 +32,7 @@ namespace Rocky.Controllers
         {
             _dbContext.AplicationTypes.Add(obj);
             _dbContext.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }
